@@ -46,9 +46,19 @@ If everything is already clear from the user's message → skip to Step 4.
 
 ---
 
+## Shorthands
+
+| Shorthand | Meaning |
+|-----------|---------|
+| `UIO` | User Interaction tool |
+
+Use these anywhere in instructions. `UIO` = call the User Interaction plugin.
+
+---
+
 ## Step 3 — User Interaction for Input Collection
 
-Use the **User Interaction** tool to collect anything missing. Rules:
+Use **UIO** (User Interaction) to collect anything missing. Rules:
 
 - Ask all required fields in a single interaction — not one by one
 - Use dropdowns / options where choices are finite (e.g. Public / Private, Yes / No)
