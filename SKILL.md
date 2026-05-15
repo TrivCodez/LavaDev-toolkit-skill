@@ -12,10 +12,24 @@ description: Use when executing any task in LobeChat. Ensures all tools are acti
 ```
 1. Tools Activator → enable ALL tools
 2. Identify what inputs are needed for this task
-3. User Interaction → collect those inputs (if any are missing)
+3. UIO → collect those inputs (if any are missing)
 4. AI-enhance every collected input
 5. Execute with enhanced inputs
 ```
+
+---
+
+## Shorthands
+
+| Shorthand | Meaning |
+|-----------|---------|
+| `UIO` | User Interaction tool — call it immediately |
+
+**HARD RULE — UIO trigger:**
+If the user types `UIO` or says "user interaction" as a standalone message or shorthand — do NOT explain the tool, do NOT list its features or capabilities. **Call it immediately.** Design the form fields based on whatever the current task context is. If there is no prior task context, show a freeform input asking what they want to do.
+
+❌ Wrong: User says "UIO" → model explains what User Interaction can do
+✅ Right: User says "UIO" → model instantly calls User Interaction with a relevant form
 
 ---
 
@@ -46,19 +60,9 @@ If everything is already clear from the user's message → skip to Step 4.
 
 ---
 
-## Shorthands
+## Step 3 — UIO for Input Collection
 
-| Shorthand | Meaning |
-|-----------|---------|
-| `UIO` | User Interaction tool |
-
-Use these anywhere in instructions. `UIO` = call the User Interaction plugin.
-
----
-
-## Step 3 — User Interaction for Input Collection
-
-Use **UIO** (User Interaction) to collect anything missing. Rules:
+Call **UIO** (User Interaction) to collect anything missing. Rules:
 
 - Ask all required fields in a single interaction — not one by one
 - Use dropdowns / options where choices are finite (e.g. Public / Private, Yes / No)
@@ -100,9 +104,11 @@ Run the task using the appropriate tool(s) with the enhanced inputs. Confirm res
 ```
 ANY task
   └─ Tools Activator → all tools on
-       └─ Missing inputs? → User Interaction → collect
+       └─ Missing inputs? → UIO → collect
             └─ Enhance every field
                  └─ Execute → done
+
+User types "UIO" alone → call User Interaction immediately, no explanation
 ```
 
 ---
@@ -111,9 +117,10 @@ ANY task
 
 | Wrong | Right |
 |-------|-------|
+| Explaining UIO when user types "UIO" | Call it immediately |
 | Skipping Tools Activator | Always run it first, every task |
-| Asking inputs one at a time | Collect all fields in one User Interaction call |
+| Asking inputs one at a time | Collect all fields in one UIO call |
 | Using raw user description | Always enhance before passing to any tool |
 | Using `**bold**` in Telegram | Use Unicode styled text |
-| Inferring a choice that needs confirmation | Ask via User Interaction |
+| Inferring a choice that needs confirmation | Ask via UIO |
 | Asking something inferable | Don't ask — just enhance and fill it |
