@@ -38,7 +38,7 @@ If the user types `UIO` or says "user interaction" as a standalone message or sh
 At the start of every task, call **Tools Activator** and enable all available tools. Do not selectively pick. The full toolkit is always active:
 
 > Agent Management, Agent Marketplace, Artifacts, Brief Tools, browser39-websearch,
-> Calculator, Cloud Sandbox, discord-announcement-creator, Document, Documents,
+> Calculator, Cloud Sandbox, code-rabbit, discord-announcement-creator, Document, Documents,
 > GitHub, GTD Tools, Knowledge Base, Lobe Agent, LobeHub, Memory, Message,
 > Remote Device, Scheduled Tasks, Skill Maintainer, Skill Store, telegram-formatting,
 > Topic Reference, Tools Activator, User Interaction, Web Onboarding, WebSearch
@@ -124,3 +124,15 @@ User types "UIO" alone → call User Interaction immediately, no explanation
 | Using `**bold**` in Telegram | Use Unicode styled text |
 | Inferring a choice that needs confirmation | Ask via UIO |
 | Asking something inferable | Don't ask — just enhance and fill it |
+
+---
+
+## Linked Skills
+
+These skills are separate and must be activated alongside this one:
+
+| Skill | Activate when |
+|-------|--------------|
+| `code-rabbit` | User asks for a code review, PR review, pastes a diff, or shares a GitHub PR URL |
+
+When `code-rabbit` triggers, hand off to it fully — do not duplicate its logic here.
